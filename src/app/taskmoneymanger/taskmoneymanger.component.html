@@ -1,0 +1,108 @@
+<div class="row container">
+    <div class="card col-3 offset-1">
+        <div class="card-header">
+            Reamining
+        </div>
+        <div class="card-body">
+            <div class="alert alert-warning">{{remain | currency : 'INR' }}</div>
+        </div>
+    </div>
+    <div class="card col-3 offset-1">
+        <div class="card-header">
+            Income
+        </div>
+        <div class="card-body">
+            <div class="alert alert-success">
+                {{totalInc | currency : 'INR' }}
+            </div>
+        </div>
+
+    </div>
+    <div class="card col-3 offset-1">
+        <div class="card-header">
+            Expense
+        </div>
+        <div class="card-body">
+            <div class="alert alert-danger">{{totalExp | currency : 'INR' }}</div>
+        </div>
+
+    </div>
+</div>
+
+    <br><br><br>
+
+<div class="row">
+    <div class="card col-4 offset-1" >
+        <div class="card-header" >Income</div>
+        <br>
+        <input type="number" class="form-control" [(ngModel)]="income " placeholder="Add Income">
+        <br>
+        <input type="text" class="form-control" [(ngModel)]="incDesc" placeholder="Add Income Name">
+        <br>
+        <input type="date" class="form-control" [(ngModel)]="dateInc" placeholder="Add Income">
+
+        <!-- <input type="date" [(ngModel)]="dateInc" class="form-control" > -->
+<br>
+        <button class="btn btn-success"  *ngIf="!showAdd"  (click)="addIncome()">+</button>
+        <button class="btn btn-primary" *ngIf="showAdd" (click)="newIncUpdate()">Update</button>
+
+    </div>
+    <div class="card col-4 offset-1">
+        <div class="card-header">Expense</div>
+        <br>
+        <input type="number" class="form-control" [(ngModel)]="expense" placeholder="Add Expense">
+        <br>
+        <input type="text" class="form-control" [(ngModel)]="descExp" placeholder="Add Expense Name">
+        <br>
+        <input type="date" class="form-control" [(ngModel)]="dateExp" placeholder="Add Income">
+
+        <!-- <input type="date" [(ngModel)]="dateExp" class="form-control" > -->
+        <br>
+        <button class="btn btn-danger" *ngIf="!showExp" (click)="addExp()">+</button>
+        <button class="btn btn-primary" *ngIf="showExp" (click)="newExpUpdate()">Update</button>
+
+    </div>
+    <div class="row m-2">
+    <div class="col-6">
+        <div class="alert alert-success">Income Statement</div>
+        <table border="1" class="table" >
+            <tr>
+                <th scope="col">IN-Amount</th>
+                <th scope="col">Descrip</th>
+                <th scope="col">Date</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+            <tr *ngFor="let item of moneyInc;let i=index;">
+                <td>{{item.inc}}</td>
+                <td>{{item.incDesc}}</td>
+                <td>{{item.date}}</td>
+                <td class=""><button class="btn btn-outline-success" (click)="incUpdate(i)">Update</button></td>
+                <td ><button class="btn btn-outline-danger ">Delete</button></td>
+            </tr>
+        </table>
+
+    </div>
+    <div class="col-6">
+        <div class="alert alert-danger">Expense Statement</div>
+
+        <table border="1" class="table" >
+            <tr>
+                <th scope="col">IN-Amount</th>
+                <th scope="col">Descrip</th>
+                <th scope="col">Date</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+            <tr *ngFor="let item of moneyExp;let i=index;">
+                <td>{{item.exp}}</td>
+                <td>{{item.expDesc}}</td>
+                <td>{{item.date}}</td>
+                <td class=""><button class="btn btn-outline-success" (click)="expUpdate(i)">Update</button></td>
+                <td ><button class="btn btn-outline-danger " (click)="deleteExp(i)">Delete</button></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+</div>
