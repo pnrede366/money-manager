@@ -1,0 +1,64 @@
+<main [ngStyle]="{backgroundImage:true?bg:false}" class="d-flex justify-content-center align-items-center flex-column">
+  <div class="d-flex mx-auto w-25 mt-5 position-relative">
+    <input
+      type="search"
+      [(ngModel)]="city"
+      value={{city}}
+      class="form-control"
+      style="left:0;height: 2.6rem;box-shadow: none;"
+      placeholder="Enter City Name"
+    />
+    <button
+      class="position-absolute p-2"
+      style="right: -1rem;height: 2.6rem;border-bottom-right-radius: 10px;border-top-right-radius: 10px;border:none;background-color: skyblue;"
+      (click)="setData()"
+    >
+    <img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png"/>    </button>
+  </div>
+
+  <div class="card m-auto w-50 " *ngIf="showCard"  id="main_div">
+  <div class="d-flex justify-content-around m-4" >
+      <div>
+        <h2>{{ temp.toFixed(2)  }}  <span> °C</span></h2>
+
+      </div>
+      <div>
+        <h1>{{cityTemp}}</h1>
+      </div>
+  </div>
+  <div class="d-flex justify-content-around m-4">
+    
+    <div >
+  <div class="d-flex">
+    <h1 class="mt-2">{{ weatherType }}</h1>
+    <!-- <img src={{imgSrc}}  alt=""> -->
+  </div>
+  <!-- {{item[i][0]}} -->
+
+</div>  </div>
+  <div class="d-flex justify-content-between m-4 ">
+    <div>Humidity: <span>{{humidity}}%</span></div>
+    <div class="d-flex ">
+      <div class="mx-3">
+        MAX: <span>{{tempMax.toFixed(2)}}</span><span> °C</span>
+      </div>
+      <div class="mx-3">MIN:<span>{{tempMin.toFixed(2)}}</span><span> °C</span></div>
+    </div>
+    <div>
+      {{timeH+':'+timeM}}
+      <span *ngIf="timeH<12">AM</span>
+      <span *ngIf="timeH>12">PM</span>
+    </div>
+  </div>
+  </div>
+  <h4 class="position-absolute" style="bottom: 1rem;">Developed By Purushottam Rede</h4>
+</main>
+<!-- d2111b21402c817410ebbac49f76099c -->
+
+<!-- <div class="mx-auto">
+    <h1>{{city}}</h1>
+       <div>{{timeH+':'+timeM}}</div>
+       <h2>{{ temp.toFixed(1)  }}  <span> °C</span></h2>
+     <h6>{{ weatherType }}</h6>
+   </div> -->
+<!-- <div style="color:black">Developed By Purushottam Rede</div> -->

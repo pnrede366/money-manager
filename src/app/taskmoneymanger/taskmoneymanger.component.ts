@@ -49,11 +49,8 @@ export class TaskmoneymangerComponent implements OnInit {
     this.moneyInc.push({"inc":this.incomeTemp,"incDesc":this.incDescTemp,"date":this.dateIncTemp})
  
     }
-    this.totalInc+=this.incomeTemp;
-    
-    this.remain=this.totalInc-this.totalExp;
-    
-    console.log(this.moneyInc);
+    this.updateBal();
+ 
    }
 
    addExp(){
@@ -63,15 +60,12 @@ export class TaskmoneymangerComponent implements OnInit {
      this.totalTemp=this.total;
      this.descExpTemp=this.descExp;
 
-     this.totalExp+=this.expenseTemp;
      if(this.expenseAdded){
      this.moneyExp.push({"exp":this.expenseTemp,"expDesc":this.descExpTemp,"date":this.dateExpTemp})
      
      }
-     this.remain=this.totalInc-this.totalExp;
-     console.log(this.moneyInc);
+     this.updateBal();
 
-    //  this.remain=this.incomeTemp-this.expenseTemp;
 
    }
    expInd=0;
@@ -82,10 +76,28 @@ export class TaskmoneymangerComponent implements OnInit {
     this.descExp=this.moneyExp[i].expDesc;
     this.dateExp=this.moneyExp[i].date;
     this.showExp=true;
+    this.updateBal();
    
   }
   deleteExp(i:number){
+    console.log("click");
+    
+    console.log(i +"index");
+    
+
     this.moneyExp.splice(i,1);
+    this.updateBal();
+
+  }
+  deleteInc(i:number){
+    console.log("click");
+    
+    console.log(i +"index");
+    
+
+    this.moneyInc.splice(i,1);
+    this.updateBal();
+
   }
   incUpdate(i:number){
     this.incInd=i;
@@ -93,6 +105,7 @@ export class TaskmoneymangerComponent implements OnInit {
     this.income=this.moneyInc[i].inc;
     this.incDesc=this.moneyInc[i].incDesc;
     this.showAdd=true;
+    this.updateBal();
    
     // this.moneyInc.push({"inc":this.incomeTemp,"incDesc":this.incDescTemp,"date":this.dateIncTemp})
 
@@ -105,6 +118,7 @@ export class TaskmoneymangerComponent implements OnInit {
     this.moneyInc[this.incInd].date=this.dateInc;
     this.moneyInc[this.incInd].incDesc=this.incDesc;
     this.showAdd=false;
+    this.updateBal();
 
   
   }
@@ -118,6 +132,29 @@ export class TaskmoneymangerComponent implements OnInit {
 
 
   //  this.moneyExp.push({"exp":this.expenseTemp,"expDesc":this.descExpTemp,"date":this.dateExpTemp})
+  this.updateBal();
+  }
+  totalBal:number=0;
+  totalExpNew:number=0;
+  totalIncNew:number=0;
+  updateBal(){
+    this.totalIncNew=0
+    this.totalExpNew=0
+    this.totalBal=0
+    for (let index = 0; index < this.moneyInc.length; index++) {
+              this.totalIncNew+=this.moneyInc[index].inc
+      
+    }
+    for (let index = 0; index < this.moneyExp.length; index++) {
+      this.totalExpNew+=this.moneyExp[index].exp
+
+    }
+    this.totalBal=this.totalIncNew-this.totalExpNew;
+    // console.clear();
+    console.log(this.moneyInc.length+"exp"+this.moneyExp.length+""+this.moneyExp+"mone"+this.moneyInc);
+    
+console.log("total bal"+this.totalBal+"total exp"+this.totalExpNew+"total inc"+this.totalIncNew);
+    
 
   }
   constructor() { }

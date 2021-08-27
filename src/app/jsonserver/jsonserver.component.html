@@ -1,0 +1,13 @@
+
+<div class="card w-25 p-1 m-5">
+    <input type="" placeholder="title" class="form-control" [(ngModel)]="title"><br>
+    <input type="" placeholder="brand" class="form-control" [(ngModel)]="author"><br>
+    <button class="btn btn-danger" (click)="display()">+</button>
+</div>
+<button (click)="show()">check</button>
+
+<div>
+    {{getData | json}}
+</div>
+<button (click)="put()">put</button>
+<button (click)="update()">update</button>
