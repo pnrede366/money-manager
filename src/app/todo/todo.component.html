@@ -1,0 +1,41 @@
+<div class="card w-50">
+  <div class="card-body">
+    <input
+      placeholder="Task Name"
+      [(ngModel)]="taskName"
+      class="form-control"
+      type="text"
+    />
+    <br />
+    <input
+      placeholder="Task Descr"
+      [(ngModel)]="taskDescr"
+      class="form-control"
+      type="text"
+    />
+    <br />
+    <select class="form-control" [(ngModel)]="priority">
+      <option value="high">High</option>
+      <option value="medium">Medium</option>
+      <option value="low">Low</option>
+    </select>
+    <br />
+    <button class="btn btn-success" *ngIf="showAdd" (click)="postData()">Add Task</button>
+    <button class="btn btn-primary" *ngIf="!showAdd" (click)="updateList()">Update</button>
+  </div>
+</div>
+<button class="btn btn-success" (click)="getData()">check</button>
+
+<div class="card mb-2 w-25" *ngFor="let item of todoTask; let i = index;">
+  <div class="card-header d-flex justify-content-between">
+    <span>{{ item.task }} {{ item.id }}</span
+    ><i class="fa fa-pencil" aria-hidden="true" (click)="updateTask(item.id)"></i>
+    <i class="fa fa-trash" (click)="deleteUser(item.id)" aria-hidden="true"></i>
+  </div>
+  <div class="card-body">
+    {{ item.descr }}
+  </div>
+  <div class="card-footer">
+    {{ item.priority }}
+  </div>
+</div>

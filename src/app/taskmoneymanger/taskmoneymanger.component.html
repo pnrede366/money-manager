@@ -1,10 +1,10 @@
-<div class="row container">
+<div class="row container mt-5">
     <div class="card col-3 offset-1">
         <div class="card-header">
             Reamining
         </div>
         <div class="card-body">
-            <div class="alert alert-warning">{{remain | currency : 'INR' }}</div>
+            <div class="alert alert-warning">{{totalBal| currency : 'INR' }}</div>
         </div>
     </div>
     <div class="card col-3 offset-1">
@@ -13,7 +13,7 @@
         </div>
         <div class="card-body">
             <div class="alert alert-success">
-                {{totalInc | currency : 'INR' }}
+                {{totalIncNew | currency : 'INR' }}
             </div>
         </div>
 
@@ -23,7 +23,7 @@
             Expense
         </div>
         <div class="card-body">
-            <div class="alert alert-danger">{{totalExp | currency : 'INR' }}</div>
+            <div class="alert alert-danger">{{totalExpNew | currency : 'INR' }}</div>
         </div>
 
     </div>
@@ -78,7 +78,7 @@
                 <td>{{item.incDesc}}</td>
                 <td>{{item.date}}</td>
                 <td class=""><button class="btn btn-outline-success" (click)="incUpdate(i)">Update</button></td>
-                <td ><button class="btn btn-outline-danger ">Delete</button></td>
+                <td ><button class="btn btn-outline-danger " (click)="deleteInc(i)">Delete</button></td>
             </tr>
         </table>
 
@@ -106,3 +106,4 @@
     </div>
 </div>
 </div>
+<!-- <button (click)="updateBal()">check</button> -->

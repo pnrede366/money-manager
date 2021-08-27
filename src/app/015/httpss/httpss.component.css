@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: rgb(239, 253, 255);
+    font-family: 'Arvo', serif;
+    
+}
+
+main{
+    height: 100vh;
+    background-color: black;
+    background: url("https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-size: cover;
+}
+#main_div{
+    background: rgba(197, 197, 197, 0.15);
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 9.5px );
+-webkit-backdrop-filter: blur( 9.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+#svg{
+    position: absolute;
+
+}
+::placeholder{
+    /* padding: 0 1rem */
+}
+input{
+        padding-left: 1rem;    
+}
+ /* margin-left: 2rem; */
